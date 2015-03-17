@@ -10,76 +10,92 @@
 
 set nocompatible
 filetype off
-filetype plugin on
 
 "==Vundle Stuff
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-
 Plugin 'gmarik/Vundle.vim'
 
+"=====Snip Mate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
 "=====Nerd Tree
-Bundle "scrooloose/nerdtree"
+Plugin 'scrooloose/nerdtree'
 
 "=====Commenter
-Bundle "scrooloose/nerdcommenter"
+Plugin 'scrooloose/nerdcommenter'
 
 "========Linter
-Bundle "scrooloose/syntastic"
+Plugin 'scrooloose/syntastic'
 
 "========Themes
-Bundle "chriskempson/tomorrow-theme"
-Bundle "ajh17/Spacegray.vim"
+Plugin 'chriskempson/tomorrow-theme'
+Plugin 'ajh17/Spacegray.vim'
 
-Bundle "LaTeX-Box-Team/LaTeX-Box"
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
-Bundle "kchmck/vim-coffee-script"
+Plugin 'kchmck/vim-coffee-script'
 
 "====Git Gutter
-Bundle "airblade/vim-gitgutter"
+Plugin 'airblade/vim-gitgutter'
 
 "====Tabularize
-Bundle "godlygeek/tabular"
-
-"=====Snip Mate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
+Plugin 'godlygeek/tabular'
 
 "=Auto-Complete
-Bundle "Shougo/neocomplcache.vim"
+Plugin 'Shougo/neocomplcache.vim'
 
 "=====Super-Tab
-Bundle "ervandew/supertab"
+Plugin 'ervandew/supertab'
 
 "=========CtrlP
-Bundle "kien/ctrlp.vim"
+Plugin 'kien/ctrlp.vim'
 
 "==Surround.vim
-Bundle "tpope/vim-surround"
+Plugin 'tpope/vim-surround'
 
 "=====Auto-Pair
-Bundle "jiangmiao/auto-pairs"
+Plugin 'jiangmiao/auto-pairs'
 
 "===Hacker News
-Bundle "ryanss/vim-hackernews"
+Plugin 'ryanss/vim-hackernews'
 
 "==========Gist
-Bundle "mattn/webapi-vim"
-Bundle "mattn/gist-vim"
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 call vundle#end()
 "=End of Vundle
+filetype plugin indent on
+syntax on
 
 "Mappings
 let mapleader=","
 no <down> ddp
 no <up> ddkP
 
-filetype plugin indent on
-syntax on
+"General
+set autoread
+set incsearch      "Move cursor to search result as you type
+set autoindent     "Autoindentation
+set smartindent
+set shiftwidth=2
+set expandtab
+set ignorecase     "Search is not case sensitive
+set paste          "Pasting is improved
+set scrolloff=20   "Always keep a space of 20 lines from bottom
+set wildmenu       "Wildmenu on
+if exists("&wildignorecase")
+  set wildignorecase
+endif
+
+"Splits
+set splitbelow
+set splitright
 
 "Cosmetic
 colorscheme Tomorrow-Night-Eighties
@@ -96,17 +112,8 @@ set hlsearch       "Highlight search result
 set showcmd        "Command in bottom bar
 set linespace=0    "No spacing between lines
 set showmatch      "Show matching parenthesis and brackets
-
-"General
-set incsearch      "Move cursor to search result as you type
-set autoindent     "Autoindentation
-set smartindent
-set shiftwidth=2
-set expandtab
-set ignorecase     "Search is not case sensitive
-set paste          "Pasting is improved
-set wildmenu       "Wildmenu on
-set scrolloff=20   "Always keep a space of 20 lines from bottom
+set term=screen-256color
+set t_Co=256
 
 " Gitgutter
 let g:gitgutter_enabled = 1

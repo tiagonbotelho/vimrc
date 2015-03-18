@@ -55,3 +55,10 @@ Up and Down arrow on the other hand:
 These mappings make it possible to move the current line text through the file
 
 (I will be adding new mappings as e explore vim more and more)
+
+
+##Installation
+
+    git clone git@github.com:tiagonbotelho/vimrc.git ~/
+    cd vimrc/
+    mv .vimrc ../ && mv -R .vim ../

@@ -59,6 +59,6 @@ These mappings make it possible to move the current line text through the file
 
 ##Installation
 
-    git clone git@github.com:tiagonbotelho/vimrc.git ~/
+    git clone git@github.com:tiagonbotelho/vimrc.git
     cd vimrc/
-    mv .vimrc ../ && mv -R .vim ../
+    mv .vimrc ~ && mv -R .vim ~

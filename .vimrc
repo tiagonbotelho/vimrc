@@ -20,6 +20,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
+"=YouCompleteMe
+"Plugin 'Valloric/YouCompleteMe'
+
 "=====Nerd Tree
 Plugin 'scrooloose/nerdtree'
 
@@ -71,8 +74,14 @@ filetype plugin indent on
 
 "Mappings
 let mapleader=","
-no <down> ddp
-no <up> ddkP
+no     <up>      ddkP "Moves the highlighted line up and down
+no     <down>    ddp
+map    <left>    <nop>
+map    <right>   <nop>
+imap   <left>    <nop>
+imap   <right>   <nop>
+imap   <up>      <nop>
+imap   <down>    <nop>
 
 "General
 set autoread
@@ -82,10 +91,11 @@ set smartindent
 set shiftwidth=2
 set expandtab
 set ignorecase     "Search is not case sensitive
-set paste          "Pasting is improved
 set scrolloff=20   "Always keep a space of 20 lines from bottom
 set wildmenu       "Wildmenu on
 set wildmode=longest,full
+set backspace=eol,start,indent 
+
 if exists("&wildignorecase")
   set wildignorecase
 endif

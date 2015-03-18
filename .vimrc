@@ -8,19 +8,16 @@
 "                  |___/                                           
 "
 
+"==Vundle Stuff
 set nocompatible
 filetype off
-
-"==Vundle Stuff
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-"=====Snip Mate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+"=====UltiSnips
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 "=====Nerd Tree
@@ -69,9 +66,8 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 
 call vundle#end()
-"=End of Vundle
 filetype plugin indent on
-syntax on
+"=End of Vundle
 
 "Mappings
 let mapleader=","
@@ -89,6 +85,7 @@ set ignorecase     "Search is not case sensitive
 set paste          "Pasting is improved
 set scrolloff=20   "Always keep a space of 20 lines from bottom
 set wildmenu       "Wildmenu on
+set wildmode=longest,full
 if exists("&wildignorecase")
   set wildignorecase
 endif
@@ -98,16 +95,16 @@ set splitbelow
 set splitright
 
 "Cosmetic
+syntax on
 colorscheme Tomorrow-Night-Eighties
 set guifont=Inconsolata:h17
 set number         "Line Numbers
 set ts=4           "Smaller tab size
-set softtabstop=2
+set tabstop=2
 set cmdheight=2    "Height of the cmd line
 set lbr            "Linebreak on 500 chars
 set tw=500
 set cursorline     "Cursor line highlighted
-set wildmode=list:longest,full
 set hlsearch       "Highlight search result
 set showcmd        "Command in bottom bar
 set linespace=0    "No spacing between lines
@@ -130,3 +127,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+"For UltiSnips
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips/'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+

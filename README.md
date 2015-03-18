@@ -42,3 +42,16 @@ This one speaks for itself basically closes brackets, " , curly-braces, etc auto
 
   [Gist](https://github.com/mattn/gist-vim):
 A very simple and useful way to make Gists! just Simply type :Gist and it will generate a Gist for you see docs on how to configure it
+
+
+##Mappings
+
+I turn left and right arrows off since i don't have any use to them.
+
+Up and Down arrow on the other hand:
+
+    no <up> ddkP
+    no <down> ddp
+These mappings make it possible to move the current line text through the file
+
+(I will be adding new mappings as e explore vim more and more)

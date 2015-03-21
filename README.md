@@ -1,7 +1,7 @@
 My Personal VimRC
 =================
 
-##Plugin's Used
+##Plugins Used
   To install Plugin's in my .vimrc i'm using [Vundle](https://github.com/gmarik/Vundle.vim) since it is the best Plugin Manager.
   
   [UltiSnips](https://github.com/SirVer/ultisnips):

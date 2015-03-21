@@ -58,7 +58,7 @@ These mappings make it possible to move the current line text through the file
 
 ## Screenshot
 
-[Screenshot](http://i.imgur.com/RJ7xfDm.png "Screenshot")
+![Screenshot](http://i.imgur.com/RJ7xfDm.png)
 
 
 ##Installation

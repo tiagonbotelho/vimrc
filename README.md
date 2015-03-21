@@ -56,6 +56,10 @@ These mappings make it possible to move the current line text through the file
 
 (I will be adding new mappings as e explore vim more and more)
 
+## Screenshot
+
+[Screenshot](http://i.imgur.com/RJ7xfDm.png "Screenshot")
+
 
 ##Installation
 

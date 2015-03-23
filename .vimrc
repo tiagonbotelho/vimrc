@@ -30,15 +30,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 
 "========Linter
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 "========Themes
 Plugin 'chriskempson/tomorrow-theme'
-Plugin 'ajh17/Spacegray.vim'
 
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-
-Plugin 'kchmck/vim-coffee-script'
 
 "====Git Gutter
 Plugin 'airblade/vim-gitgutter'
@@ -47,7 +44,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 
 "=Auto-Complete
-Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'Shougo/neocomplcache.vim'
 
 "=====Super-Tab
 Plugin 'ervandew/supertab'
@@ -60,9 +57,6 @@ Plugin 'tpope/vim-surround'
 
 "=====Auto-Pair
 Plugin 'jiangmiao/auto-pairs'
-
-"===Hacker News
-Plugin 'ryanss/vim-hackernews'
 
 "==========Gist
 Plugin 'mattn/webapi-vim'

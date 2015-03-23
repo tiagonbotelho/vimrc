@@ -1,7 +1,7 @@
 My Personal VimRC
 =================
 
-##Plugin's Used
+##Plugins Used
   To install Plugin's in my .vimrc i'm using [Vundle](https://github.com/gmarik/Vundle.vim) since it is the best Plugin Manager.
   
   [UltiSnips](https://github.com/SirVer/ultisnips):
@@ -55,6 +55,10 @@ Up and Down arrow on the other hand:
 These mappings make it possible to move the current line text through the file
 
 (I will be adding new mappings as e explore vim more and more)
+
+## Screenshot
+
+![Screenshot](http://i.imgur.com/RJ7xfDm.png)
 
 
 ##Installation

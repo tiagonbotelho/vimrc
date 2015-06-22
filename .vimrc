@@ -16,12 +16,27 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
+"=======Airline
+Plugin 'bling/vim-airline'
+
+"======Polyglot
+Plugin 'sheerun/vim-polyglot'
+
+"========Expand
+Plugin 'terryma/vim-expand-region'
+
 "=====UltiSnips
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
-"=YouCompleteMe
-"Plugin 'Valloric/YouCompleteMe'
+"===EndComplete
+Plugin 'tpope/vim-endwise'
+
+"===IndentLines
+Plugin 'Yggdroot/indentLine'
+
+"==ActionScript
+Plugin 'jeroenbourgois/vim-actionscript'
 
 "=====Nerd Tree
 Plugin 'scrooloose/nerdtree'
@@ -29,22 +44,18 @@ Plugin 'scrooloose/nerdtree'
 "=====Commenter
 Plugin 'scrooloose/nerdcommenter'
 
-"========Linter
-"Plugin 'scrooloose/syntastic'
-
 "========Themes
 Plugin 'chriskempson/tomorrow-theme'
+Plugin 'altercation/vim-colors-solarized'
 
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+"===ImprovedCPP
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 "====Git Gutter
 Plugin 'airblade/vim-gitgutter'
 
 "====Tabularize
 Plugin 'godlygeek/tabular'
-
-"=Auto-Complete
-"Plugin 'Shougo/neocomplcache.vim'
 
 "=====Super-Tab
 Plugin 'ervandew/supertab'
@@ -58,6 +69,12 @@ Plugin 'tpope/vim-surround'
 "=====Auto-Pair
 Plugin 'jiangmiao/auto-pairs'
 
+"=========Rails
+Plugin 'tpope/vim-rails'
+
+"=========Scala
+Plugin 'derekwyatt/vim-scala'
+
 "==========Gist
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
@@ -67,22 +84,62 @@ filetype plugin indent on
 "=End of Vundle
 
 "Mappings
-let mapleader=","
-no     <up>      ddkP "Moves the highlighted line up and down
+let mapleader="\<Space>"
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+
+nmap <Leader><Leader> V
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]`
+
+map q: :q
+
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
+nnoremap <CR> G
+nnoremap <BS> gg
+
+no     <up>      ddkP 
 no     <down>    ddp
 map    <left>    <nop>
 map    <right>   <nop>
+map Q <nop>
 imap   <left>    <nop>
 imap   <right>   <nop>
 imap   <up>      <nop>
 imap   <down>    <nop>
+
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+    let g:ctrlp_prompt_mappings = {
+                \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+                \ }
+endif
 
 "General
 set autoread
 set incsearch      "Move cursor to search result as you type
 set autoindent     "Autoindentation
 set smartindent
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set ignorecase     "Search is not case sensitive
 set scrolloff=20   "Always keep a space of 20 lines from bottom
@@ -116,25 +173,26 @@ set showmatch      "Show matching parenthesis and brackets
 set term=screen-256color
 set t_Co=256
 
-" Gitgutter
+"Gitgutter
 let g:gitgutter_enabled = 1
 highlight GitGutterAdd guibg=clear
 highlight GitGutterChange guibg=clear
 highlight GitGutterDelete guibg=clear
 highlight GitGutterChangeDelete guibg=clear
 
-"For syntastic linter optimal performance
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 "For UltiSnips
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips/'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"Line Identation
+let g:indentLine_color_term = 239
+let g:indentLine_char = '|'
+
+
+"Airline
+set laststatus=2
+let g:airline_theme="tomorrow"
+let g:airline_powerline_fonts=1
 

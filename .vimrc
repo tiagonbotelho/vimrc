@@ -45,8 +45,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'chriskempson/tomorrow-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jpo/vim-railscasts-theme'
-Plugin 'vim-scripts/wombat256.vim'
 Plugin 'vim-scripts/Wombat'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'scwood/vim-hybrid'
 
 "========GoLang
 Plugin 'fatih/vim-go'
@@ -170,7 +171,9 @@ set splitright
 "Cosmetic
 syntax on
 "set t_Co=256
-colorscheme wombat
+"autocmd ColorScheme janah highlight Normal ctermbg=235
+"colorscheme janah
+colorscheme hybrid 
 set guifont=Inconsolata:h17
 set number         "Line Numbers
 set ts=2           "Smaller tab size

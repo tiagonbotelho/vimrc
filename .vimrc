@@ -7,6 +7,7 @@
 "                   __/ |                                          
 "                  |___/                                           
 "
+"
 
 "==Vundle Stuff
 set nocompatible
@@ -17,7 +18,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 "=======Airline
-Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
 
 "======Polyglot
 Plugin 'sheerun/vim-polyglot'
@@ -65,23 +66,40 @@ Plugin 'godlygeek/tabular'
 "=====Super-Tab
 Plugin 'ervandew/supertab'
 
-"=========CtrlP
-Plugin 'kien/ctrlp.vim'
+"=========File Search
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'rhysd/clever-f.vim'
+Plugin 'tpope/vim-fugitive'
 
 "==Surround.vim
 Plugin 'tpope/vim-surround'
 
+"==Rainbow
+Plugin 'kien/rainbow_parentheses.vim'
+
 "=====Auto-Pair
 Plugin 'jiangmiao/auto-pairs'
 
-"=========Rails
+"=========Ruby
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+
+"=========Python
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
+
+"=========Clojure
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-fireplace'
 
 "=========Scala
 Plugin 'derekwyatt/vim-scala'
 
 "====JavaScript
 Plugin 'Shutnik/jshint2.vim'
+Plugin 'jelera/vim-javascript-syntax'
 
 "==========Gist
 Plugin 'mattn/webapi-vim'
@@ -98,6 +116,10 @@ let mapleader="\<Space>"
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>r :%s/
+nnoremap <Leader>u :redo<CR>
+nnoremap <Leader>A :Ack ""<Left>
+nnoremap <Leader>a :Ack <C-r><C-w><CR>
+nnoremap <Leader>rc :e $MYVIMRC<CR>
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 vmap <Leader>p "+p
@@ -135,6 +157,11 @@ imap   <up>      <nop>
 imap   <down>    <nop>
 
 let g:ctrlp_use_caching = 0
+let g:clever_f_ignore_case = 1
+let g:airline_powerline_fonts = 1
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
@@ -151,14 +178,21 @@ set autoread
 set incsearch      "Move cursor to search result as you type
 set autoindent     "Autoindentation
 set smartindent
+set encoding=utf8
 set shiftwidth=2
 set softtabstop=2
+set linespace=20
 set expandtab
 set ignorecase     "Search is not case sensitive
 set scrolloff=20   "Always keep a space of 20 lines from bottom
 set wildmenu       "Wildmenu on
 set wildmode=longest,full
 set backspace=eol,start,indent 
+set undofile
+set undodir=~/.vim/undodir
+set hidden
+set history=100
+set selection=inclusive
 
 if exists("&wildignorecase")
   set wildignorecase
@@ -170,11 +204,8 @@ set splitright
 
 "Cosmetic
 syntax on
-"set t_Co=256
-"autocmd ColorScheme janah highlight Normal ctermbg=235
-"colorscheme janah
 colorscheme hybrid 
-set guifont=Inconsolata:h17
+set guifont=Hack:h15
 set number         "Line Numbers
 set ts=2           "Smaller tab size
 set tabstop=2
@@ -189,20 +220,35 @@ set showmatch      "Show matching parenthesis and brackets
 set term=screen-256color
 set t_Co=256
 
+"Remove trailing whitespaces on save
+autocmd BufWritePre *.py,*.rb,*cpp,*java,*go,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
+
 "MacVim
 if has("gui_running")
   set transparency=2
   set guioptions=T
   set guioptions=m
 endif
-set guifont=Inconsolata\ for\ Powerline:h17
-highlight Cursor guifg=white guibg=white
-highlight iCursor guifg=white guibg=white
-set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+set guifont=Hack:h15
+"highlight Cursor guifg=white guibg=white
+"highlight iCursor guifg=white guibg=white
+"set guicursor=n-v-c:block-Cursor
+"set guicursor+=i:ver100-iCursor
+"set guicursor+=n-v-c:blinkon0
+"set guicursor+=i:blinkwait10
+"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+"Python
+let python_highlight_all=1
+syntax on
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 
 "Gitgutter
@@ -248,3 +294,13 @@ let g:gist_use_password_in_gitconfig = 1
 
 "SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+
+"Clojure
+autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+autocmd Syntax clojure EnableSyntaxExtension
+
+"Rainbow parenthesis
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

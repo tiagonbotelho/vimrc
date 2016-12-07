@@ -26,10 +26,6 @@ Plugin 'sheerun/vim-polyglot'
 "========Expand
 Plugin 'terryma/vim-expand-region'
 
-"=====UltiSnips
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
 "===EndComplete
 Plugin 'tpope/vim-endwise'
 
@@ -120,6 +116,7 @@ nnoremap <Leader>u :redo<CR>
 nnoremap <Leader>A :Ack ""<Left>
 nnoremap <Leader>a :Ack <C-r><C-w><CR>
 nnoremap <Leader>rc :e $MYVIMRC<CR>
+nmap <Leader>op o<ESC>p
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 vmap <Leader>p "+p
@@ -205,7 +202,7 @@ set splitright
 "Cosmetic
 syntax on
 colorscheme hybrid 
-set guifont=Hack:h15
+set guifont=Hack:h18
 set number         "Line Numbers
 set ts=2           "Smaller tab size
 set tabstop=2
@@ -230,13 +227,6 @@ if has("gui_running")
   set guioptions=m
 endif
 set guifont=Hack:h15
-"highlight Cursor guifg=white guibg=white
-"highlight iCursor guifg=white guibg=white
-"set guicursor=n-v-c:block-Cursor
-"set guicursor+=i:ver100-iCursor
-"set guicursor+=n-v-c:blinkon0
-"set guicursor+=i:blinkwait10
-"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 "Python
 let python_highlight_all=1
@@ -250,20 +240,12 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
-
 "Gitgutter
 let g:gitgutter_enabled = 1
-
-"For UltiSnips
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips/'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "Line Identation
 let g:indentLine_color_term = 239
 let g:indentLine_char = '|'
-
 
 "Airline
 set laststatus=2
